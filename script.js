@@ -1,13 +1,13 @@
 class Game{
     constructor(arr=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,' ']){
-        let $items = document.querySelectorAll('td');
+        const $items = document.querySelectorAll('td');
         for (let i = 0; i < arr.length; i++) {
             $items[i].innerHTML = arr[i];
         }
     }  
     shuffle(){
-        let $items = document.querySelectorAll('td');
-        let valueArr = [];
+        const $items = document.querySelectorAll('td');
+        const valueArr = [];
         for (let i = 0; i < $items.length; i++) {
             valueArr.push($items[i].innerHTML);
         }
@@ -15,12 +15,12 @@ class Game{
         myGame = new Game(valueArr);
     }
     checkWin(){
-        let $items = document.querySelectorAll('td');
-        let arr = [];
+        const $items = document.querySelectorAll('td');
+        const arr = [];
         for (let i = 0; i < $items.length; i++) {
             arr.push($items[i].innerHTML);
         }
-        let patternWin = '123456789101112131415 ',
+        const patternWin = '123456789101112131415 ',
             patternWin2 = ' 123456789101112131415',
             patternWin3 = '159132610143711154812 ';
         let resultGame = arr.join('');
@@ -29,9 +29,7 @@ class Game{
         }
     }
     moveElem(){
-        move(this);
-        myGame.checkWin();
-        function move(currentElem){
+            const currentElem = this;
             let $items = document.querySelectorAll('td'),
                 currentElemPos = +currentElem.id,
                 currentElemVal = currentElem.innerHTML;
@@ -94,12 +92,11 @@ class Game{
                  leftElem.innerHTML = currentElemVal;
                  currentElem.innerHTML = leftElemVal;
              }
+             myGame.checkWin();
         }
-        
-    }
 
 }
-let $items = document.querySelectorAll('td');
+const $items = document.querySelectorAll('td');
 let myGame = new Game();
 document.querySelector('.shuffle').addEventListener('click', myGame.shuffle);
 for (let i = 0; i < $items.length; i++) {
